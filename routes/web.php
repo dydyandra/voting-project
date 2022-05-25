@@ -28,3 +28,7 @@ Route::group(['prefix' => 'kandidat', 'as' => 'kandidat.'], function(){
     Route::get('/detail/{id}', [KandidatController::class, 'show'])->name('show');
 
 });
+
+Route::get('/home', function () {
+    return view('home');
+})->name('home');

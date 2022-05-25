@@ -7,8 +7,15 @@ use App\Models\Kandidat;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
+
 class KandidatController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('can:is-admin');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +23,10 @@ class KandidatController extends Controller
      */
     public function index()
     {
-        $kandidat= Kandidat::all();
+        // if (!Gate::allows('is-admin')) {
+        //     return redirect()->route('home');
+        // };
+        $kandidat = Kandidat::all();
         return view('kandidat.list-kandidat', [
             'kandidat' => $kandidat,
         ]);
@@ -29,7 +39,7 @@ class KandidatController extends Controller
      */
     public function create()
     {
-        
+
         // $author = Book::pluck('author', 'id');
         return view('kandidat.create-kandidat');
     }
@@ -144,9 +154,7 @@ class KandidatController extends Controller
                 'keterangan' => $request['keterangan'],
                 'photo' => $fileNameToStore,
             ]);
-        }
-        
-        else{
+        } else {
             $kandidat->update([
                 'nama' => $request['nama'],
                 'keterangan' => $request['keterangan'],
@@ -164,7 +172,7 @@ class KandidatController extends Controller
      */
     public function destroy($id)
     {
-        $kandidat= Kandidat::findOrFail($id);
+        $kandidat = Kandidat::findOrFail($id);
         // if ($review->photo != 'noimage.jpg'){
         //     Storage::disk('public')->delete('images/'.$review->photo);
         // }
