@@ -1,12 +1,39 @@
 @extends('layouts.template')
 
+@section('localization')
+<ul class="navbar-nav ml-auto">
+    @php $locale = session()->get('locale'); @endphp
+    <li class="nav-item dropdown">
+        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+        data-bs-toggle="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+            @switch($locale)
+                @case('en')
+                EN
+                @break
+                @case('id')
+                IN
+                @break
+                @default
+                EN
+            @endswitch    
+            <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/kandidat/en">EN</a>
+            <a class="dropdown-item" href="/kandidat/id">ID</a>
+        </div>
+    </li>
+</ul>
+
+@endsection
+
 @section('container')
 <div class="mx-2">
-    <h2 class="mt-2">Data Kandidat</h2>
+    <h2 class="mt-2">{{__('form.table.title')}}</h2>
 
     <div class="row">
         <div class="col-6">
-            <a href="{{ route('kandidat.create') }}" class="btn btn-purple"><i class="fa fa-plus"></i> Tambah Kandidat Baru</a>
+            <a href="{{ route('kandidat.create') }}" class="btn btn-purple"><i class="fa fa-plus"></i> {{__('form.table.add')}}</a>
         </div>
     </div>
 
@@ -49,10 +76,10 @@
         <thead bordered style="background-color: rgb(150, 113, 184)" class="thead">
             <tr>
                 <th>ID</th>
-                <th>Foto Kandidat</th>
-                <th>Nama</th>
-                <th>Keterangan</th>
-                <th>Aksi</th>
+                <th>{{__('form.table.photo')}}</th>
+                <th>{{__('form.table.name')}}</th>
+                <th>{{__('form.table.description')}}</th>
+                <th>{{__('form.table.action')}}</th>
             </tr>
         </thead>
         @php
@@ -69,11 +96,11 @@
             <td>{{ $d->keterangan }}</td>
             <td>
                 <form onsubmit="return confirm('Apakah Anda Yakin Menghapus Data ini ?');" action="{{ route('kandidat.destroy', $d->id) }}" method="POST">
-                    <a href="{{ Route('kandidat.edit', $d->id) }}" class="btn btn-sm btn-purple shadow"><i class="fa fa-edit"></i> Edit</a>
+                    <a href="{{ Route('kandidat.edit', $d->id) }}" class="btn btn-sm btn-purple shadow"><i class="fa fa-edit"></i> {{__('form.table.edit')}}</a>
                     |
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-sm btn-danger shadow"><i class="fa fa-trash"></i> Delete</button>
+                    <button type="submit" class="btn btn-sm btn-danger shadow"><i class="fa fa-trash"></i> {{__('form.table.delete')}}</button>
                     |
                     <a href="{{ route('kandidat.show' , $d->id) }}" class="btn btn-sm btn-secondary shadow"><i class="fa fa-info-circle"></i> Detail</a>
                 </form>

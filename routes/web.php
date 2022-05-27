@@ -26,9 +26,12 @@ Route::group(['prefix' => 'kandidat', 'as' => 'kandidat.'], function(){
     Route::post('/update/{id}', [KandidatController::class, 'update'])->name('update');
     Route::delete('/delete/{id}', [KandidatController::class, 'destroy'])->name('destroy');
     Route::get('/detail/{id}', [KandidatController::class, 'show'])->name('show');
-
+    Route::get('/create/{locale}', 'App\Http\Controllers\LocalizationController@index');
+    Route::get('/{locale}', 'App\Http\Controllers\LocalizationController@index');
+    Route::get('/edit/{id}/{locale}', 'App\Http\Controllers\LocalizationController@index');
 });
 
 Route::get('/home', function () {
     return view('home');
 })->name('home');
+

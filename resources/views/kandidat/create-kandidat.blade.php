@@ -1,11 +1,39 @@
 @extends('layouts.template')
 
+@section('localization')
+<ul class="navbar-nav ml-auto">
+    @php $locale = session()->get('locale'); @endphp
+    <li class="nav-item dropdown">
+        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+        data-bs-toggle="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+            @switch($locale)
+                @case('en')
+                EN
+                @break
+                @case('id')
+                IN
+                @break
+                @default
+                EN
+            @endswitch    
+            <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/kandidat/create/en">EN</a>
+            <a class="dropdown-item" href="/kandidat/create/id">ID</a>
+        </div>
+    </li>
+</ul>
+
+@endsection
+
 @section('container')
+
     <div class="row justify-content-center">
         <div class="col-lg-9">
             <div class="card mt-2">
                 <div class="card-body text-left top-icon">
-                    <h1 class="mt-3">Kandidat Baru</h1>
+                    <h1 class="mt-3">{{__('form.title')}}</h1>
                     <br>
                     @if (Session::has('error'))
                         <div class="alert alert-danger">{{ Session::get('error') }}</div>
@@ -20,7 +48,7 @@
                         @csrf
                         <div>
                             <input class="mt-3 form-control form-control-lg" id="nama" name="nama" type="text"
-                                value="{{ old('nama') }}" placeholder="Nama Kandidat" list="title-list" autofocus required>
+                                value="{{ old('nama') }}" placeholder="{{__('form.profile.name')}}" list="title-list" autofocus required>
                             {{-- <datalist id="title-list">
                                 @foreach ($title as $t)
                                     <option data-value="{{ $t->id }}">{{ $t->title }}</option>
@@ -36,7 +64,7 @@
 
                         <div>
                             <input class="mt-3 form-control form-control-lg" id="keterangan" name="keterangan" type="keterangan"
-                                placeholder="Keterangan" value="{{ old('keterangan') }}" autofocus required>
+                                placeholder="{{__('form.profile.description')}}" value="{{ old('keterangan') }}" autofocus required>
                         </div>
 
                         @error('keterangan')
@@ -71,7 +99,7 @@
                     </form>
                     <br>
                     <div class="mt-4 text-center submit-btn">
-                        <button type="submit" class="btn btn-primary" form="form-login">Tambah Data</button>
+                        <button type="submit" class="btn btn-primary" form="form-login">{{__('form.button')}}</button>
                     </div>
                 </div>
             </div>
