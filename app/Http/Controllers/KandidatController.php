@@ -173,9 +173,9 @@ class KandidatController extends Controller
     public function destroy($id)
     {
         $kandidat = Kandidat::findOrFail($id);
-        // if ($review->photo != 'noimage.jpg'){
-        //     Storage::disk('public')->delete('images/'.$review->photo);
-        // }
+        if ($kandidat->photo != 'noimage.jpg'){
+            Storage::disk('public')->delete('images/'.$kandidat->photo);
+        }
         $kandidat->delete();
         return redirect()->route('kandidat.list-kandidat')->with('hapus_review', 'Penghapusan data berhasil');
     }

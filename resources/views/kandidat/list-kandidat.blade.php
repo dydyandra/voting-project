@@ -73,7 +73,7 @@
     @endif
     {{-- <h5>Total Read: {{ $showRead }} | Total in Progress: {{ $showProgress }}</h5> --}}
     <table class="table">
-        <thead bordered style="background-color: rgb(150, 113, 184)" class="thead">
+        <thead bordered class="thead">
             <tr>
                 <th>ID</th>
                 <th>{{__('form.table.photo')}}</th>
