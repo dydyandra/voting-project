@@ -8,14 +8,9 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 
+
 class KandidatController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('can:is-admin');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -23,9 +18,6 @@ class KandidatController extends Controller
      */
     public function index()
     {
-        // if (!Gate::allows('is-admin')) {
-        //     return redirect()->route('home');
-        // };
         $kandidat = Kandidat::all();
         return view('kandidat.list-kandidat', [
             'kandidat' => $kandidat,
@@ -173,8 +165,8 @@ class KandidatController extends Controller
     public function destroy($id)
     {
         $kandidat = Kandidat::findOrFail($id);
-        if ($kandidat->photo != 'noimage.jpg'){
-            Storage::disk('public')->delete('images/'.$kandidat->photo);
+        if ($kandidat->photo != 'noimage.jpg') {
+            Storage::disk('public')->delete('images/' . $kandidat->photo);
         }
         $kandidat->delete();
         return redirect()->route('kandidat.list-kandidat')->with('hapus_review', 'Penghapusan data berhasil');

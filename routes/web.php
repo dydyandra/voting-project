@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KandidatController;
 use App\Http\Controllers\ArticlesController;
+use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'kandidat', 'as' => 'kandidat.'], function(){
+Route::group(['prefix' => 'kandidat', 'as' => 'kandidat.', 'middleware' => 'can:is-admin'], function(){
     Route::get('/', [KandidatController::class, 'index'])->name('list-kandidat');
     Route::get('/create', [KandidatController::class, 'create'])->name('create');
     Route::post('/store', [KandidatController::class, 'store'])->name('store');
@@ -31,10 +32,6 @@ Route::group(['prefix' => 'kandidat', 'as' => 'kandidat.'], function(){
     Route::get('/{locale}', 'App\Http\Controllers\LocalizationController@index');
     Route::get('/edit/{id}/{locale}', 'App\Http\Controllers\LocalizationController@index');
 });
-
-Route::get('/home', function () {
-    return view('home');
-})->name('home');
 
 
 Route::get('/articles', [ArticlesController::class, 'index']);
