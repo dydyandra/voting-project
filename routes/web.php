@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KandidatController;
+use App\Http\Controllers\ArticlesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,6 @@ Route::get('/home', function () {
     return view('home');
 })->name('home');
 
+
+Route::get('/articles', [ArticlesController::class, 'index']);
+Route::get('/articles/withoutcache', [ArticlesController::class, 'allWithoutcache']);

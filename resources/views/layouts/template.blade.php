@@ -12,6 +12,10 @@
   <script src="https://use.fontawesome.com/6f05757a67.js"></script>
   <title>Yuhu</title>
   <style>
+    .pagination nav{
+      background-color:#ececec !important;
+    }
+    
     body {
       background-color: #ececec;
     }
@@ -30,6 +34,8 @@
       font-weight: bold;
       color: white;
     }
+
+
   </style>
 </head>
 
