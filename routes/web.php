@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KandidatController;
 use App\Http\Controllers\ArticlesController;
+use App\Models\Category;
 use GuzzleHttp\Middleware;
 
 /*
@@ -37,13 +38,14 @@ Route::group(['prefix' => 'kandidat', 'as' => 'kandidat.', 'middleware' => 'can:
 Route::get('/articles', [ArticlesController::class, 'index']);
 Route::get('/articles/withoutcache', [ArticlesController::class, 'allWithoutcache']);
 Route::get('/articles/{article:slug}', [ArticlesController::class, 'content']);
-// Route::get('/articles/{category:slug}', function(Category $category){
-//     return view('article', [
-//         "title" => 'Halaman Category',
-//         "article" => $category->articles,
-//         "name" => $category->name
-// ]);
-// });
+
+Route::get('/articles/{category:slug}', function(Category $category){
+    return view('article', [
+        "title" => 'Halaman Category',
+        "article" => $category->articles,
+        "name" => $category->name
+]);
+});
 
 Route::get('/categories', function(){
     return view('article.categories', [
