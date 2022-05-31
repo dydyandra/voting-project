@@ -19,7 +19,10 @@ class ArticleFactory extends Factory
     {
         return [
             'title' => $this->faker->text(),
-            'description' => $this->faker->paragraph(20)
+            'slug' => $this->faker->slug(),
+            'excerpt' => $this->faker->paragraph(),
+            'description' => $this->faker->paragraph(20),
+            'category_id' => mt_rand(1,3)
         ];
     }
 }

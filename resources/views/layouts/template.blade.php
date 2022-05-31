@@ -54,6 +54,9 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/">Home</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/articles">Artikel</a>
+          </li>
           {{-- <li class="nav-item">
               <a class="nav-link" href="/artikel"></a>
             </li> --}}

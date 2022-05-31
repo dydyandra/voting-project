@@ -23,8 +23,16 @@ class ArticlesController extends Controller
 
         return view('article', [
                 "title" => 'Halaman Artikel',
-                "articles" => $articles
-            ]);
+                "articles" => $articles,
+                "articles"=> Article::latest()->get()
+        ]);
+    }
+
+    public function content(Article $article) {
+        return view('content', [
+            "article" => $article
+            
+        ]);
     }
   
   // Returns all 500 without Caching 
