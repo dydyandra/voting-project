@@ -39,8 +39,16 @@ Route::get('/articles', [ArticlesController::class, 'index']);
 Route::get('/articles/withoutcache', [ArticlesController::class, 'allWithoutcache']);
 Route::get('/articles/{article:slug}', [ArticlesController::class, 'content']);
 
+Route::get('/categories/{category:slug}', function(Category $category){
+    return view('category', [
+        "title" => 'Halaman Category',
+        "articles" => $category->articles,
+        "name" => $category->name
+]);
+});
+
 Route::get('/categories', function(){
-    return view('article.categories', [
+    return view('categories', [
         'title' => 'Categories',
         'categories' => Category::all()
     ]);

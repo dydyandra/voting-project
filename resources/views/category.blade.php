@@ -19,11 +19,6 @@
 
     @endforeach
 
-    @if($articles->links()->paginator->hasPages() || $article->links())
-    <div class=" pagination justify-content-center mt-4 p-4 box has-text-centered">
-        {{ $articles->links() }}
-    </div>
-    @endif 
 @endsection
 
 
