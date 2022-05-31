@@ -24,7 +24,7 @@ class ArticlesController extends Controller
         return view('article', [
                 "title" => 'Halaman Artikel',
                 "articles" => $articles,
-                "articles"=> Article::latest()->get()
+                "articles"=> Article::latest()->paginate(10)
         ]);
     }
 

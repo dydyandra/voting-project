@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Kandidat;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -16,9 +18,14 @@ class KandidatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     
     public function index()
     {
-        $kandidat = Kandidat::all();
+        $kandidat = Cache::remember('kandidat', 60, function () {
+            return DB::table('kandidats')->latest()->get();
+        });
+
         return view('kandidat.list-kandidat', [
             'kandidat' => $kandidat,
         ]);

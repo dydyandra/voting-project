@@ -14,7 +14,7 @@
                 IN
                 @break
                 @default
-                EN
+                ID
             @endswitch    
             <span class="caret"></span>
         </a>

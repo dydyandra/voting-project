@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KandidatController;
 use App\Http\Controllers\ArticlesController;
+use App\Models\Category;
 use GuzzleHttp\Middleware;
 
 /*
