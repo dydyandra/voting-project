@@ -3,44 +3,50 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Article;
+use App\Models\Kandidat;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
-class ArticlesController extends Controller
+class VotingController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    // Returns all 500 articles with Caching
-    public function index() {
-
-        $articles = Cache::remember('articles', 60, function () {
-            return DB::table('articles')->paginate(10);
-        });
-
-        return view('article', [
-                "title" => 'Halaman Artikel',
-                "articles" => $articles,
-                "articles"=> Article::latest()->paginate(10)
+    public function voting()
+    {
+        return view('voting', [
+            "title" => 'Halaman Voting',
+            "candidates" => Kandidat::all()
         ]);
     }
+    public function hasil(Request $request)
+    {
+        $messagesError = [
+            'required' => ':attribute ini wajib diisi!',
+            'min' => ':attribute harus diisi minimal :min karakter!',
+            'max' => ':attribute harus diisi maksimal :max karakter!',
+            'mimes' => ':foto harus berupa jpg,png,jpeg!',
+            'numeric' => 'attribute harus diisi angka!',
+        ];
 
-    public function content(Article $article) {
-        return view('content', [
-            "article" => $article
-        ]);
+        $this->validate($request,[
+            'nama_depan' => 'required|min:5',
+            'nama_belakang' => 'required|min:5|max:40',
+            'jenis_kelamin' => 'required|max:1',
+            'alamat' => 'required',
+            'email' => 'required',
+            'nomor_telepon' => 'required|numeric',
+            'ktp' => 'required|mimes:jpg,png,jpeg|max:2048',
+        ],$messagesError);
+        $request->ktp = $this->SavePhoto($request);
+        return view('hasil',['data' => $request]);
     }
 
-  // Returns all 500 without Caching
-    public function allWithoutCache() {
-        $articles = Article::all();
-        return view('article', [
-            "title" => 'Halaman Artikel',
-            "articles" => $articles
-        ]);
+    public function index()
+    {
+
     }
 
     /**

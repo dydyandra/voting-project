@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Kandidat extends Model
+class Voting extends Model
 {
     use HasFactory;
 
     protected $guarded = ['id'];
 
-    public function voting(){
-        return $this->hasMany(Voting::class);
+    public function kandidat(){
+        return $this->belongsTo(Kandidat::class);
     }
 }

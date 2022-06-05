@@ -33,7 +33,7 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
         ])->validate();
 
-        
+
         $user =  User::create([
             'name' => $input['name'],
             'email' => $input['email'],
@@ -43,6 +43,6 @@ class CreateNewUser implements CreatesNewUsers
         dispatch(new TestEmailJob($user));
 
         return $user;
-        
+
     }
 }
