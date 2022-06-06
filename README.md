@@ -78,7 +78,7 @@ Request pada website digunakan untuk mengambil input dan file dari form Kandidat
 
 Validation digunakan pada beberapa form seperti form menambah dan mengedit kandidat. Validation dapat dilihat pada [Kandidat Controller](app/Http/Controllers/KandidatController.php) untuk mengecek validasi dari input dan juga [view Kandidat](resources/views/kandidat/create-kandidat.blade.php). Beberapa contoh validation yang digunakan yaitu seperti berikut: 
 
-
+<img src="/images/validation.PNG" width="500"/>
 #### Response
 **Lokasi:**
 1. [Kandidat Controller](app/Http/Controllers/KandidatController.php)
@@ -482,6 +482,7 @@ Unit testing dilakukan untuk 3 fitur yaitu Article, Kandidat dan Voting.
 ```
 
 Berikut adalah contoh hasil testing dengan menggunakan run `php artisan test`:
+<img src="/images/test.PNG" width="500"/>
 
 
 ### Feature testing
@@ -497,9 +498,7 @@ Untuk pengiriman email menggunakan `mailtrap.io`
 
 Hasil yang didapatkan adalah sebagai berikut:
 
-
-
-
+<img src="/images/queue.PNG" width="500"/>
 
 **Lokasi:**
 1. [CreateNewUser.php](app/Actions/Fortify/CreateNewUser.php) untuk tempat menaruh dispatch email yang akan dikirimkan. Dikarenakan project menggunakan Fortify, maka email akan dikirimkan apabila user akan disimpan datanya (setelah menakan tombol sign up)
@@ -576,4 +575,5 @@ Terdapat 2 command yaitu:
 
 Adapun hasil dari email yaitu sebgai berikut apabila menggunakan mailtrap:
 
-
+<img src="/images/command1.PNG" width="500"/>
+<img src="/images/command2.PNG" width="500"/>
