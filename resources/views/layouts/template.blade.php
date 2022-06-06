@@ -10,7 +10,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
   <script src="https://use.fontawesome.com/6f05757a67.js"></script>
-  <title>Yuhu</title>
+  <title>Lotere Amnida</title>
   <style>
     .pagination nav{
       background-color:#ececec !important;
@@ -25,7 +25,6 @@
     }
 
     li {
-
       font-weight: bold;
     }
 
@@ -35,17 +34,20 @@
       color: white;
     }
 
-
   </style>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar navbar-dark">
+  <nav class="navbar navbar-expand-lg navbar navbar-dark fixed-top mx-9" style="padding: 0 10% 0 10%">
     <div class="container-fluid">
       {{-- <a class="navbar-brand" href="/article">
         <img src="/images/logo2.png" width="50" alt="">
         </a> --}}
-      <h3 class="mx-3" style="color: white">Lotere Amnida</h3>
+      <h3 class="mx-3" style="color: white">
+        <a href="/" class='mx-3' style="color: white">
+          Lotere Amnida
+        </a>    
+      </h3>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -57,9 +59,6 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/articles">Artikel</a>
           </li>
-          {{-- <li class="nav-item">
-              <a class="nav-link" href="/artikel"></a>
-            </li> --}}
         </ul>
         {{-- <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
