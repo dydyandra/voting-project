@@ -22,6 +22,7 @@
 
     nav {
       background-color: rgb(8, 51, 94);
+      
     }
 
     li {
@@ -33,15 +34,11 @@
       font-weight: bold;
       color: white;
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> cb938cc45d92198806f50f0131c2eda9043f64ab
   </style>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar navbar-dark fixed-top mx-9" style="padding: 0 10% 0 10%">
+  <nav class="navbar navbar-expand-lg navbar navbar-dark sticky-top mx-auto " style="padding: 1% 20% 1% 20%">
     <div class="container-fluid">
       {{-- <a class="navbar-brand" href="/article">
         <img src="/images/logo2.png" width="50" alt="">
@@ -85,7 +82,7 @@
       </div>
     </div>
   </nav>
-  <div class="container mt-4">
+  <div class="container m-auto">
     @yield('container')
   </div>
 

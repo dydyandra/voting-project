@@ -40,7 +40,7 @@ class CreateNewUser implements CreatesNewUsers
             'password' => Hash::make($input['password']),
         ]);
 
-        dispatch(new TestEmailJob($user));
+        // dispatch(new TestEmailJob($user));
 
         return $user;
 

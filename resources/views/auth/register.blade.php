@@ -14,11 +14,15 @@
   <div class="d-flex align-items-center text-center min-vh-100 min-vw-100">
     <form action="{{ route('register') }}" method="POST" class="mx-auto w-25">
       @csrf
-      <h1 class="mb-5 mt-n3 fw-bold font-monospace">LOTERE AMNIDA</h1>
+      <h1 class="mb-5 mt-n3 fw-bold">
+        <a href="/" style="color: black; text-decoration: none">
+            LOTERE AMNIDA
+        </a>
+      </h1>
       <h4 class="my-4 fw-normal">Register</h4>
 
-      <div class="form-floating">
-        <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="floatingName" placeholder="Full Name">
+      <div class="form-floating" style="margin-bottom: 20px">
+        <input type="text" name="name" value="{{ old('name') }}" class="form-control shadow" id="floatingName" placeholder="Full Name">
         <label for="floatingName">Full Name</label>
         @error('name')
         <div class="alert alert-danger">
@@ -27,8 +31,8 @@
         @enderror
       </div>
 
-      <div class="form-floating">
-        <input type="email" name="email" value="{{ old('email') }}" class="form-control" id="floatingEmail" placeholder="name@example.com">
+      <div class="form-floating" style="margin-bottom: 20px">
+        <input type="email" name="email" value="{{ old('email') }}" class="form-control shadow" id="floatingEmail" placeholder="name@example.com">
         <label for="floatingEmail">Email address</label>
         @error('email')
         <div class="alert alert-danger">
@@ -37,8 +41,8 @@
         @enderror
       </div>
 
-      <div class="form-floating">
-        <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <div class="form-floating" style="margin-bottom: 20px">
+        <input type="password" name="password" class="form-control shadow" id="floatingPassword" placeholder="Password">
         <label for="floatingPassword">Password</label>
         @error('password')
         <div class="alert alert-danger">
@@ -47,8 +51,8 @@
         @enderror
       </div>
 
-      <div class="form-floating">
-        <input type="password" name="password_confirmation" class="form-control" id="floatingConfirm" placeholder="Confirm Your Password">
+      <div class="form-floating" style="margin-bottom: 20px">
+        <input type="password" name="password_confirmation" class="form-control shadow" id="floatingConfirm" placeholder="Confirm Your Password">
         <label for="floatingConfirm">Confirm Password</label>
       </div>
 

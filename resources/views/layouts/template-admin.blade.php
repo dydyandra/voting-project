@@ -42,12 +42,16 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar navbar-dark">
+  <nav class="navbar navbar-expand-lg navbar navbar-dark sticky-top mx-auto " style="padding: 1% 20% 1% 20%">
     <div class="container-fluid">
       {{-- <a class="navbar-brand" href="/article">
         <img src="/images/logo2.png" width="50" alt="">
         </a> --}}
-      <h3 class="mx-3" style="color: white">Lotere Amnida</h3>
+        <h3 class="mx-3" style="color: white">
+          <a href="/" class='mx-3' style="color: white">
+            Lotere Amnida
+          </a>    
+        </h3>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
