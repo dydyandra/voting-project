@@ -14,7 +14,7 @@ class LogoutTest extends DuskTestCase
      *
      * @return void
      */
-    
+
     use DatabaseMigrations;
 
     public function test_logout()
@@ -28,8 +28,7 @@ class LogoutTest extends DuskTestCase
         $this->browse(function ($browser) use ($user) {
             $browser->loginAs($user)
                 ->visit('/home')
-                ->post('/logout')
-                ->visit('/home')
+                ->press('logout')
                 ->assertPathIs('/articles');
         });
     }

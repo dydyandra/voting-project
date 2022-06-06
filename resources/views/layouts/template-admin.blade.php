@@ -73,7 +73,7 @@
         @yield('localization')
         <form method="POST" action="{{ route('logout') }}">
           @csrf
-          <button class="btn btn-outline-danger ms-2" type="submit">Log out</button>
+          <button class="btn btn-outline-danger ms-2" type="submit" name="logout">Log out</button>
         </form>
 
       </div>
