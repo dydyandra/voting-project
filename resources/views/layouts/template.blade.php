@@ -45,6 +45,7 @@
             {{-- <a class="navbar-brand" href="/article">
         <img src="/images/logo2.png" width="50" alt="">
         </a> --}}
+<<<<<<< HEAD
             <h3 class="mx-3 mt-1" style="color: white">
                 <a href="/" class='mx-3 mt-1' style="color:white">
                     Lotere Amnida
@@ -69,6 +70,30 @@
                             aria-current="page" href="/voting">Vote Now!</a>
                     </li>
                     {{-- <li class="nav-item">
+=======
+      <h3 class="mx-3" style="color: white">
+        <a href="/" class='mx-3' style="color: white">
+          Lotere Amnida
+        </a>    
+      </h3>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/articles">Artikel</a>
+          </li>
+          @can('is-user')
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/voting">Vote Now!</a>
+          </li>
+          @endcan
+          {{-- <li class="nav-item">
+>>>>>>> a7e1770fb2ad1f8b7fbb7413af6205b88f174863
               <a class="nav-link" href="/artikel"></a>
             </li> --}}
                 </ul>
