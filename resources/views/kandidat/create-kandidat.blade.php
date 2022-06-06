@@ -1,5 +1,34 @@
 @extends('layouts.pages-blank')
 
+<<<<<<< HEAD
+=======
+@section('localization')
+@php $locale = session()->get('locale'); @endphp
+<li class="nav-item dropdown">
+    <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
+        <i class="align-middle" data-feather="globe"></i>
+    </a>
+    <a class="nav-link d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
+        <span class="text-dark">@switch($locale)
+            @case('en')
+            EN
+            @break
+            @case('id')
+            ID
+            @break
+            @default
+            ID
+            @endswitch</span>
+        <i class="align-middle" data-feather="chevron-down"></i>
+    </a>
+    <div class="dropdown-menu dropdown-menu-end">
+        <a class="dropdown-item" href="/kandidat/en">EN</a>
+        <a class="dropdown-item" href="/kandidat/id">ID</a>
+    </div>
+</li>
+@endsection
+
+>>>>>>> 059a9d9957de6399f609ecac2aa9adc10b94b3ea
 @section('container')
 <h1 class="h1 mb-3">{{__('form.title')}}</h1>
 
@@ -49,6 +78,7 @@
                     </div>
                 @enderror
 
+<<<<<<< HEAD
                 <div>
                     {{-- <label for="photo">Gambar Buku</label> --}}
                     <input type="file" class="mt-3 form-control form-control-file @error('photo') is-invalid @enderror" id="photo" name="photo">
@@ -57,6 +87,11 @@
                 @error('photo')
                     <div class="alert alert-danger">
                         Tipe File Hanya Boleh jpg,png,jpeg,gif,svg. Silahkan upload ulang.
+=======
+                    <div class="form-group">
+                        {{-- <label for="photo">Gambar Buku</label> --}}
+                        <input type="file" class="mt-3 form-control form-control-lg form-control-file" id="photo" name="photo">
+>>>>>>> 059a9d9957de6399f609ecac2aa9adc10b94b3ea
                     </div>
                 @enderror
 
