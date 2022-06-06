@@ -1,27 +1,5 @@
 @extends('layouts.pages-blank')
 
-@section('localization')
-@php $locale = session()->get('locale'); @endphp
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-        @switch($locale)
-        @case('en')
-        EN
-        @break
-        @case('id')
-        IN
-        @break
-        @default
-        ID
-        @endswitch
-    </a>
-    <div class="dropdown-menu dropdown-menu-end">
-        <a class="dropdown-item" href="/kandidat/en">EN</a>
-        <a class="dropdown-item" href="/kandidat/id">ID</a>
-    </div>
-</li>
-@endsection
-
 @section('container')
 <h1 class="h1 mb-3">{{__('form.table.title')}}</h1>
 
@@ -34,27 +12,27 @@
                 </div>
             </div>
             <div class="card-body">
-                @if (Session::has('tambah_review'))
+                @if (Session::has('tambah_data'))
                 <div class="alert alert-success alert-dismissible fade show p-3 bg-success w-50" role="alert">
-                    <strong><i class="fa fa-check-circle"></i> Berhasil!</strong>
+                    <strong><i class="fa fa-check-circle"></i> {{__('form.message.success')}}!</strong>
                     <br>
-                    Penambahan kandidat Berhasil
+                    {{__('form.message.add')}}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 @endif
 
-                @if (Session::has('edit_review'))
-                <div class="alert alert-success alert-dismissible fade show p-3 bg-success w-50" role="alert"> <strong><i class="fa fa-check-circle"></i> Berhasil!</strong>
+                @if (Session::has('edit_data'))
+                <div class="alert alert-success alert-dismissible fade show p-3 bg-success w-50" role="alert"> <strong><i class="fa fa-check-circle"></i> {{__('form.message.success')}}!</strong>
                     <br>
-                    Pengeditan kandidat Berhasil
+                    {{__('form.message.edit')}}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 @endif
 
-                @if (Session::has('hapus_review'))
-                <div class="alert alert-success alert-dismissible fade show p-3 bg-success w-50" role="alert"> <strong><i class="fa fa-check-circle"></i> Berhasil!</strong>
+                @if (Session::has('hapus_data'))
+                <div class="alert alert-success alert-dismissible fade show p-3 bg-success w-50" role="alert"> <strong><i class="fa fa-check-circle"></i> {{__('form.message.success')}}!</strong>
                     <br>
-                    Penghapusan kandidat Berhasil
+                    {{__('form.message.delete')}}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 @endif
@@ -73,7 +51,7 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>
-                            <img src="{{ asset('storage/images/'. $d->photo) }}" alt="" style="height: 100px; width:75px">
+                            <img src="{{ asset('storage/images/'. $d->photo) }}" alt="" style="height: 100px; width:100px">
                             {{-- {{ $d->photo }} --}}
                         </td>
                         <td>{{ $d->nama }}</td>

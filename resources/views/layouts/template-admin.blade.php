@@ -42,7 +42,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar navbar-dark sticky-top mx-auto " style="padding: 1% 20% 1% 20%">
+  <nav class="navbar navbar-expand-lg navbar navbar-dark sticky-top mx-auto px-2 py-3">
     <div class="container-fluid">
       {{-- <a class="navbar-brand" href="/article">
         <img src="/images/logo2.png" width="50" alt="">
@@ -58,13 +58,16 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
+            <h5><a class="nav-link active" aria-current="page" href="/">Home</a></h5>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/kandidat">Manage Kandidat</a>
+            <h5>
+              <a class="nav-link active" aria-current="page" href="/kandidat">Manage Kandidat</a>
+            </h5>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/stats">Stats</a>
+            <h5>
+              <a class="nav-link active" aria-current="page" href="/stats">Stats</a>
           </li>
           {{-- <li class="nav-item">
               <a class="nav-link" href="/artikel"></a>

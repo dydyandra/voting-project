@@ -1,12 +1,13 @@
-@extends('layouts.template-admin')
+@extends('layouts.pages-blank')
+
 
 @section('container')
 <div class="container-fluid">
     <section>
       <div class="row">
         <div class="col-12 mt-3 mb-1">
-          <h2 class="text-uppercase">Voting Statistics</h2>
-          <h4>For Admin Only</h4>
+          <h2 class="text-uppercase">{{__('stats.title')}}</h2>
+          <h4>{{__('stats.sub-title')}}</h4>
         </div>
       </div>
       <div class="row">
@@ -15,11 +16,8 @@
             <div class="card-body">
               <div class="d-flex justify-content-between px-md-1">
                 <div>
-                  <h3 class="text-danger">{{ $registered_count }}</h3>
-                  <p class="mb-0">Registered All Time</p>
-                </div>
-                <div class="align-self-center">
-                  <i class="fas fa-rocket text-danger fa-3x"></i>
+                  <h3 style="font-weight: bold" class="text-danger">{{ $registered_count }}</h3>
+                  <h4 style="font-weight: bold" class="mb-0">{{__('stats.registered-all-time')}}</h4>
                 </div>
               </div>
             </div>
@@ -30,11 +28,8 @@
             <div class="card-body">
               <div class="d-flex justify-content-between px-md-1">
                 <div>
-                  <h3 class="text-success">{{ $registered_today_count }}</h3>
-                  <p class="mb-0">Registered Today</p>
-                </div>
-                <div class="align-self-center">
-                  <i class="far fa-rocket text-success fa-3x"></i>
+                  <h3 style="font-weight: bold" class="text-success">{{ $registered_today_count }}</h3>
+                  <h4 style="font-weight: bold" class="mb-0">{{__('stats.registered-today')}}</h4>
                 </div>
               </div>
             </div>
@@ -47,11 +42,8 @@
             <div class="card-body">
               <div class="d-flex justify-content-between px-md-1">
                 <div>
-                  <h3 class="text-info">{{ $voting_count }}</h3>
-                  <p class="mb-0">Have Voted</p>
-                </div>
-                <div class="align-self-center">
-                  <i class="fas fa-rocket text-info fa-3x"></i>
+                  <h3 style="font-weight: bold" class="text-info">{{ $voting_count }}</h3>
+                  <h4 style="font-weight: bold" class="mb-0">{{__('stats.have-voted')}}</h4>
                 </div>
               </div>
               <div class="px-md-1">
@@ -68,11 +60,8 @@
             <div class="card-body">
               <div class="d-flex justify-content-between px-md-1">
                 <div>
-                  <h3 class="text-warning">{{ $voted_today_count }}</h3>
-                  <p class="mb-0">Have Voted Today</p>
-                </div>
-                <div class="align-self-center">
-                  <i class="far fa-rocket text-warning fa-3x"></i>
+                  <h3 style="font-weight: bold" class="text-warning">{{ $voted_today_count }}</h3>
+                  <h4 style="font-weight: bold" class="mb-0">{{__('stats.have-voted-today')}}</h4>
                 </div>
               </div>
               <div class="px-md-1">
@@ -89,11 +78,8 @@
             <div class="card-body">
               <div class="d-flex justify-content-between px-md-1">
                 <div>
-                  <h3 class="text-success">{{ $hasNotVoted }}</h3>
-                  <p class="mb-0">Have Not Voted</p>
-                </div>
-                <div class="align-self-center">
-                  <i class="fas fa-rocket text-success fa-3x"></i>
+                  <h3 style="font-weight: bold" class="text-success">{{ $hasNotVoted }}</h3>
+                  <h4 style="font-weight: bold" class="mb-0">{{__('stats.have-not-voted')}}</h4>
                 </div>
               </div>
               <div class="px-md-1">
@@ -110,11 +96,8 @@
             <div class="card-body">
               <div class="d-flex justify-content-between px-md-1">
                 <div>
-                  <h3 class="text-danger">{{ $hasNotVotedPercent }}%</h3>
-                  <p class="mb-0">Have Not Voted</p>
-                </div>
-                <div class="align-self-center">
-                  <i class="fas fa-rocket text-danger fa-3x"></i>
+                  <h3 style="font-weight: bold" class="text-danger">{{ $hasNotVotedPercent }}%</h3>
+                  <h4 style="font-weight: bold" class="mb-0">{{__('stats.have-not-voted')}}</h4>
                 </div>
               </div>
               <div class="px-md-1">

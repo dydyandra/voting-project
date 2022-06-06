@@ -52,13 +52,11 @@ class KandidatController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required|max:255',
-            'keterangan' => 'required|max:255',
-            // 'photo' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'nama' => 'required|min:5|max:255',
+            'keterangan' => 'required|min:10|max:255',
+            'photo' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
 
         ]);
-
-
 
         if ($request->hasFile('photo')) {
             $filenameWithExt = $request->file('photo')->getClientOriginalName();
@@ -80,13 +78,13 @@ class KandidatController extends Controller
 
         $kandidat = new Kandidat;
         $kandidat->nama = $request->nama;
-        $kandidat->slug = $request->slug;
+        $kandidat->slug = $slug;
         $kandidat->keterangan = $request->keterangan;
         $kandidat->photo = $fileNameToStore;
         $kandidat->save();
 
 
-        return redirect()->route('kandidat.list-kandidat')->with('tambah_review', 'Penambahan Pengguna berhasil');
+        return redirect()->route('kandidat.list-kandidat')->with('tambah_data', 'Penambahan Pengguna berhasil');
     }
 
     /**
@@ -127,8 +125,8 @@ class KandidatController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama' => 'required|max:255',
-            'keterangan' => 'required|max:255',
+            'nama' => 'required|min:5|max:255',
+            'keterangan' => 'required|min:10|max:255',
             // 'photo' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
 
         ]);
@@ -169,7 +167,7 @@ class KandidatController extends Controller
             ]);
         }
 
-        return redirect()->route('kandidat.list-kandidat')->with('edit_review', 'Pengeditan Data berhasil!');
+        return redirect()->route('kandidat.list-kandidat')->with('edit_data', 'Pengeditan Data berhasil!');
     }
 
     /**
@@ -185,7 +183,7 @@ class KandidatController extends Controller
             Storage::disk('public')->delete('images/' . $kandidat->photo);
         }
         $kandidat->delete();
-        return redirect()->route('kandidat.list-kandidat')->with('hapus_review', 'Penghapusan data berhasil');
+        return redirect()->route('kandidat.list-kandidat')->with('hapus_data', 'Penghapusan data berhasil');
     }
 
     public function content(Kandidat $kandidat){

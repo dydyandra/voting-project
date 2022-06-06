@@ -25,6 +25,13 @@ return [
         "add" => "Add New Candidate",
         "edit" => "Edit",
         "delete"=>"Delete"
+    ],
+
+    "message" => [
+        "add" => "New Candidate has been successfully added!", 
+        "edit" => "Candidate has successfully been edited!",
+        "delete" => "Candidate has been removed!", 
+        "success" => "Success!",
     ]
 ];
 

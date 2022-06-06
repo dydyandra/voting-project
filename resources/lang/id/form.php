@@ -23,8 +23,13 @@ return [
         "add" => "Tambah Kandidat Baru",
         "edit" => "Ubah",
         "delete"=>"Hapus"
+    ],
+    "message" => [
+        "add" => "Penambahan kandidat Berhasil", 
+        "edit" => "Pengeditan kandidat berhasil!",
+        "delete" => "Penghapusan kandidat berhasil!",
+        "success" => "Sukses!",
     ]
-	// "thank" => "Thank you for your contribution.",
 ];
 
 ?>

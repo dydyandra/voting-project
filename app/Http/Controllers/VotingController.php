@@ -54,7 +54,7 @@ class VotingController extends Controller
         $voting->save();
 
 
-        return redirect()->route('voting.voting')->with('tambah_review', 'Penambahan Pengguna berhasil');
+        return redirect()->route('voting.voting')->with('tambah_data', 'Penambahan Pengguna berhasil');
 
     }
 

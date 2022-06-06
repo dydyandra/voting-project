@@ -2,7 +2,7 @@
 
 @section('container')
     <h1 class="mb-5 mt-5" style="text-align:center">{{ $title }}</h1>
-    @if (Session::has('tambah_review'))
+    @if (Session::has('tambah_data'))
     <div class="alert alert-success alert-dismissible fade show" role="alert" style="width: 100%; height:auto;">
         <strong><i class="fa fa-check-circle"></i> Berhasil!</strong>
         <br>

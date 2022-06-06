@@ -1,27 +1,5 @@
 @extends('layouts.pages-blank')
 
-@section('localization')
-@php $locale = session()->get('locale'); @endphp
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-        @switch($locale)
-        @case('en')
-        EN
-        @break
-        @case('id')
-        IN
-        @break
-        @default
-        ID
-        @endswitch
-    </a>
-    <div class="dropdown-menu dropdown-menu-end">
-        <a class="dropdown-item" href="/kandidat/en">EN</a>
-        <a class="dropdown-item" href="/kandidat/id">ID</a>
-    </div>
-</li>
-@endsection
-
 @section('container')
 <h1 class="h1 mb-3">{{__('form.title')}}</h1>
 
@@ -39,36 +17,62 @@
                     <div class="alert alert-danger">{{ Session::get('wrongUsername') }}</div>
                 </div>
                 @endif
-                <form id="form-login" action="{{ route('kandidat.store') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group">
-                        <input class="mt-3 form-control form-control-lg" id="nama" name="nama" type="text" value="{{ old('nama') }}" placeholder="{{__('form.profile.name')}}" list="title-list" autofocus required>
-                    </div>
-                    @error('nama')
-                    <div class="alert alert-danger">
-                        Nama salah
-                    </div>
-                    @enderror
+                <form id="form-login" action="{{ route('kandidat.store') }}" method="POST"
+                enctype="multipart/form-data">
+                @csrf
+                <div>
+                    <label class="font-weight-bold" style="font-weight: bold" for="nama">{{__('edit.profile.name')}}</label>
+                    <input class="mt-3 form-control form-control-lg @error('nama') is-invalid @enderror" id="nama" name="nama" type="text"
+                        value="{{ old('nama') }}" placeholder="{{__('form.profile.name')}}" list="title-list" autofocus required>
+                    {{-- <datalist id="title-list">
+                        @foreach ($title as $t)
+                            <option data-value="{{ $t->id }}">{{ $t->title }}</option>
+                        @endforeach
+                    </datalist> --}}
+                </div>
 
-                    <div class="form-group">
-                        <input class="mt-3 form-control form-control-lg" id="keterangan" name="keterangan" type="keterangan" placeholder="{{__('form.profile.description')}}" value="{{ old('keterangan') }}" autofocus required>
-                    </div>
-                    @error('keterangan')
+                @error('nama')
                     <div class="alert alert-danger">
-                        Author Harus Dimasukkan
+                        Nama salah. Panjang karakter seharusnya antara 5-255. Silahkan dimasukkan kembali.
                     </div>
-                    @enderror
+                @enderror
 
-                    <div class="form-group">
-                        {{-- <label for="photo">Gambar Buku</label> --}}
-                        <input type="file" class="mt-3 form-control form-control-file" id="photo" name="photo">
+                <div class="form-group mt-3">
+                    <label class="font-weight-bold" style="font-weight: bold" for="keterangan">{{__('edit.profile.description')}}</label>
+                        <textarea id="keterangan" form="form-login" name = "keterangan" rows="6" cols="50" onKeyPress class="@error('keterangan') is-invalid @enderror mt-3 form-control form-control-lg">{{{ old('keterangan') }}}
+                        </textarea>
                     </div>
-                    @error('photo')
+
+                @error('keterangan')
                     <div class="alert alert-danger">
-                        Tipe File Salah
+                        Keterangan salah. Panjang karakter seharusnya antara 5-255. Silahkan dimasukkan kembali.
                     </div>
-                    @enderror
-                </form>
+                @enderror
+
+                <div>
+                    {{-- <label for="photo">Gambar Buku</label> --}}
+                    <input type="file" class="mt-3 form-control form-control-file @error('photo') is-invalid @enderror" id="photo" name="photo">
+                </div>
+
+                @error('photo')
+                    <div class="alert alert-danger">
+                        Tipe File Hanya Boleh jpg,png,jpeg,gif,svg. Silahkan upload ulang.
+                    </div>
+                @enderror
+
+                {{-- <div>
+                    
+                    <input class="mt-3 form-control form-control-lg" type="date" name="started"
+                        value="<?php echo date('Y-m-d'); ?>" autofocus required>
+                </div> --}}
+
+                {{-- @error('started')
+                    <div class="alert alert-danger">
+                        Tanggal Mulai Harus Dimasukkan
+                    </div>
+                @enderror --}}
+
+            </form>
                 <br>
                 <div class="mt-4 text-center submit-btn">
                     <button type="submit" class="btn btn-primary" form="form-login">{{__('form.button')}}</button>

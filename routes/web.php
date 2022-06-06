@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KandidatController;
 use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\VotingController;
 use App\Http\Controllers\StatsController;
+use App\Http\Middleware\Localization;
 use App\Models\Category;
 use App\Models\Voting;
 use GuzzleHttp\Middleware;
@@ -36,6 +38,8 @@ Route::get('/', function () {
     }
 });
 
+Route::get('lang/{locale}', [LocalizationController::class, 'index']);
+
 Route::group(['prefix' => 'kandidat', 'as' => 'kandidat.', 'middleware' => 'can:is-admin'], function () {
     Route::get('/', [KandidatController::class, 'index'])->name('list-kandidat');
     Route::get('/create', [KandidatController::class, 'create'])->name('create');
@@ -44,9 +48,9 @@ Route::group(['prefix' => 'kandidat', 'as' => 'kandidat.', 'middleware' => 'can:
     Route::post('/update/{id}', [KandidatController::class, 'update'])->name('update');
     Route::delete('/delete/{id}', [KandidatController::class, 'destroy'])->name('destroy');
     Route::get('/detail/{id}', [KandidatController::class, 'show'])->name('show');
-    Route::get('/create/{locale}', 'App\Http\Controllers\LocalizationController@index');
-    Route::get('/{locale}', 'App\Http\Controllers\LocalizationController@index');
-    Route::get('/edit/{id}/{locale}', 'App\Http\Controllers\LocalizationController@index');
+    // Route::get('/create/{locale}', 'App\Http\Controllers\LocalizationController@index');
+    // Route::get('/{locale}', 'App\Http\Controllers\LocalizationController@index');
+    // Route::get('/edit/{id}/{locale}', 'App\Http\Controllers\LocalizationController@index');
 });
 
 Route::group(['prefix' => 'articles', 'middleware' => 'can:not-admin'], function () {
@@ -55,9 +59,6 @@ Route::group(['prefix' => 'articles', 'middleware' => 'can:not-admin'], function
     Route::get('/{article:slug}', [ArticlesController::class, 'content']);
 });
 
-// Route::get('/articles', [ArticlesController::class, 'index']);
-// Route::get('/articles/withoutcache', [ArticlesController::class, 'allWithoutcache']);
-// Route::get('/articles/{article:slug}', [ArticlesController::class, 'content']);
 
 Route::group(['prefix' => 'categories', 'middleware' => 'can:not-admin'], function () {
     Route::get('/{category:slug}', function (Category $category) {
@@ -74,23 +75,6 @@ Route::group(['prefix' => 'categories', 'middleware' => 'can:not-admin'], functi
         ]);
     });
 });
-
-// Route::get('/categories/{category:slug}', function (Category $category) {
-//     return view('category', [
-//         "title" => 'Halaman Category',
-//         "articles" => $category->articles,
-//         "name" => $category->name
-//     ]);
-// });
-
-// Route::get('/voting', [VotingController::class, 'voting']);
-
-// Route::get('/categories', function () {
-//     return view('categories', [
-//         'title' => 'Categories',
-//         'categories' => Category::all()
-//     ]);
-// });
 
 
 Route::group(['prefix' => 'voting', 'as' => 'voting.', 'middleware' => 'can:is-user'], function () {

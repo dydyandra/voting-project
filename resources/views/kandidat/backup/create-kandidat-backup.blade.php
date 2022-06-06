@@ -49,11 +49,6 @@
                         <div>
                             <input class="mt-3 form-control form-control-lg" id="nama" name="nama" type="text"
                                 value="{{ old('nama') }}" placeholder="{{__('form.profile.name')}}" list="title-list" autofocus required>
-                            {{-- <datalist id="title-list">
-                                @foreach ($title as $t)
-                                    <option data-value="{{ $t->id }}">{{ $t->title }}</option>
-                                @endforeach
-                            </datalist> --}}
                         </div>
 
                         @error('nama')
@@ -73,8 +68,8 @@
                             </div>
                         @enderror
 
-                        <div>
-                            {{-- <label for="photo">Gambar Buku</label> --}}
+                        <div class="form-group mt-3">
+                            <label style="font-weight: bold" class="font-weight-bold" for="photo">{{ __('edit.profile.photo') }}</label>
                             <input type="file" class="mt-3 form-control form-control-file" id="photo" name="photo">
                         </div>
 
@@ -83,18 +78,6 @@
                                 Tipe File Salah
                             </div>
                         @enderror
-
-                        {{-- <div>
-                            
-                            <input class="mt-3 form-control form-control-lg" type="date" name="started"
-                                value="<?php echo date('Y-m-d'); ?>" autofocus required>
-                        </div> --}}
-
-                        {{-- @error('started')
-                            <div class="alert alert-danger">
-                                Tanggal Mulai Harus Dimasukkan
-                            </div>
-                        @enderror --}}
 
                     </form>
                     <br>
@@ -108,18 +91,4 @@
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
-    {{-- <script>
-        var title = {!! json_encode($title->toArray()) !!};
-        var myElement = document.getElementById("author");
-        $('#title').change(function() {
-                var id = $(this).val();
-                var item2 = title.filter(item => item.title === id)
-                console.log(item2[0].author)
-
-                myElement.value = item2[0].author;
-
-            });
-
-
-    </script> --}}
 @endsection

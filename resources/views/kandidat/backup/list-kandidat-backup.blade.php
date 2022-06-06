@@ -41,7 +41,7 @@
 
     <br/>
     <br/>
-    @if (Session::has('tambah_review'))
+    @if (Session::has('tambah_data'))
         <div class="alert alert-success alert-dismissible fade show" role="alert" style="width: 100%; height:auto;">
             <strong><i class="fa fa-check-circle"></i> Berhasil!</strong>
             <br>
@@ -52,7 +52,7 @@
         </div>
     @endif
 
-    @if (Session::has('edit_review'))
+    @if (Session::has('edit_data'))
         <div class="alert alert-success alert-dismissible fade show" role="alert" style="width: 100%; height:auto;">
             <strong><i class="fa fa-check-circle"></i> Berhasil!</strong>
             <br>
@@ -62,7 +62,7 @@
         </div>
     @endif
 
-    @if (Session::has('hapus_review'))
+    @if (Session::has('hapus_data'))
         <div class="alert alert-success alert-dismissible fade show" role="alert" style="width: 100%; height:auto;">
             <strong><i class="fa fa-check-circle"></i> Berhasil!</strong>
             <br>
