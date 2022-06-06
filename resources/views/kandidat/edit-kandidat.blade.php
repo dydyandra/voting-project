@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('layouts.template-admin')
 
 @section('localization')
 <ul class="navbar-nav ml-auto">

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KandidatController;
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\VotingController;
+use App\Http\Controllers\StatsController;
 use App\Models\Category;
 use App\Models\Voting;
 use GuzzleHttp\Middleware;
@@ -63,3 +64,6 @@ Route::group(['prefix' => 'voting', 'as' => 'voting.'], function(){
     Route::post('/store', [VotingController::class, 'store'])->name('store');
     Route::get('/{kandidat:slug}', [KandidatController::class, 'content']);
 });
+
+
+Route::get('/stats', [StatsController::class, 'index']);
