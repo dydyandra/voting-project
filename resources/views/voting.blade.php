@@ -21,13 +21,13 @@
           <div class="col-md-8">
             <div class="card-body">
               <h5 class="card-title">{{ $candidate->nama }}</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text">{{ $candidate->keterangan }}</p>
               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
               <form id="form-voting" action="{{ route('voting.store') }}" name="voting" method="POST">
                 @csrf
                 <input type="hidden" name="kandidatvote" value={{ $candidate->id}} />
                 <button type="submit" class="btn btn-primary">VOTE</button>
-            </form>
+              </form>
             </div>
           </div>
         </div>
