@@ -52,7 +52,7 @@ class KandidatController extends Controller
         $request->validate([
             'nama' => 'required|min:5|max:255',
             'keterangan' => 'required|min:10|max:255',
-            'photo' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'photo' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
 
         ]);
 
