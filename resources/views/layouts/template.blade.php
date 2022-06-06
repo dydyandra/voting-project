@@ -59,9 +59,11 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/articles">Artikel</a>
           </li>
+          @can('is-user')
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/voting">Vote Now!</a>
           </li>
+          @endcan
           {{-- <li class="nav-item">
               <a class="nav-link" href="/artikel"></a>
             </li> --}}
