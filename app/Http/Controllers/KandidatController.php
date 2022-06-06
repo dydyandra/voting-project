@@ -22,9 +22,7 @@ class KandidatController extends Controller
      
     public function index()
     {
-        $kandidat = Cache::remember('kandidat', 60, function () {
-            return DB::table('kandidats')->latest()->get();
-        });
+        $kandidat = Kandidat::all();
 
         return view('kandidat.list-kandidat', [
             'kandidat' => $kandidat,

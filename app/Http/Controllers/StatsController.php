@@ -6,13 +6,19 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Voting;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
 
 class StatsController extends Controller
 {
     public function index(){
+
+        $user = Cache::remember('users', 60, function () {
+            return DB::table('users')->latest()->get();
+        });
         
-        // get USER for all
-        $user = User::all();
+        // // get USER for all
+        // $user = User::all();
         $user_count = $user->count();
 
         // get USER for only today
