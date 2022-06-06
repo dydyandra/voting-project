@@ -3,17 +3,21 @@
 @section('localization')
 @php $locale = session()->get('locale'); @endphp
 <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-        @switch($locale)
-        @case('en')
-        EN
-        @break
-        @case('id')
-        IN
-        @break
-        @default
-        ID
-        @endswitch
+    <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
+        <i class="align-middle" data-feather="globe"></i>
+    </a>
+    <a class="nav-link d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
+        <span class="text-dark">@switch($locale)
+            @case('en')
+            EN
+            @break
+            @case('id')
+            ID
+            @break
+            @default
+            ID
+            @endswitch</span>
+        <i class="align-middle" data-feather="chevron-down"></i>
     </a>
     <div class="dropdown-menu dropdown-menu-end">
         <a class="dropdown-item" href="/kandidat/en">EN</a>
@@ -28,14 +32,12 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-header">
-                <div class="col-6">
+            <div class="card-body">
+                <div class="col-6 mb-2">
                     <a href="{{ route('kandidat.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> {{__('form.table.add')}}</a>
                 </div>
-            </div>
-            <div class="card-body">
                 @if (Session::has('tambah_review'))
-                <div class="alert alert-success alert-dismissible fade show p-3 bg-success w-50" role="alert">
+                <div class="alert alert-success alert-dismissible fade show p-3 w-50" role="alert">
                     <strong><i class="fa fa-check-circle"></i> Berhasil!</strong>
                     <br>
                     Penambahan kandidat Berhasil
@@ -44,7 +46,8 @@
                 @endif
 
                 @if (Session::has('edit_review'))
-                <div class="alert alert-success alert-dismissible fade show p-3 bg-success w-50" role="alert"> <strong><i class="fa fa-check-circle"></i> Berhasil!</strong>
+                <div class="alert alert-success alert-dismissible fade show p-3 w-50" role="alert">
+                    <strong><i class="fa fa-check-circle"></i> Berhasil!</strong>
                     <br>
                     Pengeditan kandidat Berhasil
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -52,7 +55,8 @@
                 @endif
 
                 @if (Session::has('hapus_review'))
-                <div class="alert alert-success alert-dismissible fade show p-3 bg-success w-50" role="alert"> <strong><i class="fa fa-check-circle"></i> Berhasil!</strong>
+                <div class="alert alert-success alert-dismissible fade show p-3 w-50" role="alert">
+                    <strong><i class="fa fa-check-circle"></i> Berhasil!</strong>
                     <br>
                     Penghapusan kandidat Berhasil
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -80,7 +84,7 @@
                         <td>{{ $d->keterangan }}</td>
                         <td>
                             <form onsubmit="return confirm('Apakah Anda Yakin Menghapus Data ini ?');" action="{{ route('kandidat.destroy', $d->id) }}" method="POST">
-                                <a href="{{ Route('kandidat.edit', $d->id) }}" class="btn btn-sm btn-purple shadow"><i class="fa fa-edit"></i> {{__('form.table.edit')}}</a>
+                                <a href="{{ Route('kandidat.edit', $d->id) }}" class="btn btn-sm btn-warning shadow"><i class="fa fa-edit"></i> {{__('form.table.edit')}}</a>
                                 |
                                 @csrf
                                 @method('DELETE')
