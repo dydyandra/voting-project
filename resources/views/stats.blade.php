@@ -1,84 +1,22 @@
-@extends('layouts.template')
+@extends('layouts.template-admin')
 
 @section('container')
 <div class="container-fluid">
     <section>
       <div class="row">
         <div class="col-12 mt-3 mb-1">
-          <h5 class="text-uppercase">Voting Statistics</h5>
-          <p>For Admin Only</p>
+          <h2 class="text-uppercase">Voting Statistics</h2>
+          <h4>For Admin Only</h4>
         </div>
       </div>
       <div class="row">
-        <div class="col-xl-3 col-sm-6 col-12 mb-4">
-          <div class="card">
-            <div class="card-body">
-              <div class="d-flex justify-content-between px-md-1">
-                <div class="align-self-center">
-                  <i class="fas fa-pencil-alt text-info fa-3x"></i>
-                </div>
-                <div class="text-end">
-                  <h3>{{ $registered_count }}</h3>
-                  <p class="mb-0">Registered Users</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 col-12 mb-4">
-          <div class="card">
-            <div class="card-body">
-              <div class="d-flex justify-content-between px-md-1">
-                <div class="align-self-center">
-                  <i class="far fa-comment-alt text-warning fa-3x"></i>
-                </div>
-                <div class="text-end">
-                  <h3>{{ $voting_count }}</h3>
-                  <p class="mb-0">Users Have Voted</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 col-12 mb-4">
-          <div class="card">
-            <div class="card-body">
-              <div class="d-flex justify-content-between px-md-1">
-                <div class="align-self-center">
-                  <i class="fas fa-chart-line text-success fa-3x"></i>
-                </div>
-                <div class="text-end">
-                  <h3>{{ $hasNotVoted }}</h3>
-                  <p class="mb-0">Users Have Not Voted</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 col-12 mb-4">
-          <div class="card">
-            <div class="card-body">
-              <div class="d-flex justify-content-between px-md-1">
-                <div class="align-self-center">
-                  <i class="fas fa-map-marker-alt text-danger fa-3x"></i>
-                </div>
-                <div class="text-end">
-                  <h3>423</h3>
-                  <p class="mb-0">Total Visits</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xl-3 col-sm-6 col-12 mb-4">
+        <div class="col-xl-6 col-sm-6 col-12 mb-4">
           <div class="card">
             <div class="card-body">
               <div class="d-flex justify-content-between px-md-1">
                 <div>
-                  <h3 class="text-danger">278</h3>
-                  <p class="mb-0">New Projects</p>
+                  <h3 class="text-danger">{{ $registered_count }}</h3>
+                  <p class="mb-0">Registered All Time</p>
                 </div>
                 <div class="align-self-center">
                   <i class="fas fa-rocket text-danger fa-3x"></i>
@@ -87,46 +25,16 @@
             </div>
           </div>
         </div>
-        <div class="col-xl-3 col-sm-6 col-12 mb-4">
+        <div class="col-xl-6 col-sm-6 col-12 mb-4">
           <div class="card">
             <div class="card-body">
               <div class="d-flex justify-content-between px-md-1">
                 <div>
-                  <h3 class="text-success">156</h3>
-                  <p class="mb-0">New Clients</p>
+                  <h3 class="text-success">{{ $registered_today_count }}</h3>
+                  <p class="mb-0">Registered Today</p>
                 </div>
                 <div class="align-self-center">
-                  <i class="far fa-user text-success fa-3x"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 col-12 mb-4">
-          <div class="card">
-            <div class="card-body">
-              <div class="d-flex justify-content-between px-md-1">
-                <div>
-                  <h3 class="text-warning">64.89 %</h3>
-                  <p class="mb-0">Conversion Rate</p>
-                </div>
-                <div class="align-self-center">
-                  <i class="fas fa-chart-pie text-warning fa-3x"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 col-12 mb-4">
-          <div class="card">
-            <div class="card-body">
-              <div class="d-flex justify-content-between px-md-1">
-                <div>
-                  <h3 class="text-info">423</h3>
-                  <p class="mb-0">Support Tickets</p>
-                </div>
-                <div class="align-self-center">
-                  <i class="far fa-life-ring text-info fa-3x"></i>
+                  <i class="far fa-rocket text-success fa-3x"></i>
                 </div>
               </div>
             </div>
@@ -139,11 +47,11 @@
             <div class="card-body">
               <div class="d-flex justify-content-between px-md-1">
                 <div>
-                  <h3 class="text-info">278</h3>
-                  <p class="mb-0">New Posts</p>
+                  <h3 class="text-info">{{ $voting_count }}</h3>
+                  <p class="mb-0">Have Voted</p>
                 </div>
                 <div class="align-self-center">
-                  <i class="fas fa-book-open text-info fa-3x"></i>
+                  <i class="fas fa-rocket text-info fa-3x"></i>
                 </div>
               </div>
               <div class="px-md-1">
@@ -160,11 +68,11 @@
             <div class="card-body">
               <div class="d-flex justify-content-between px-md-1">
                 <div>
-                  <h3 class="text-warning">156</h3>
-                  <p class="mb-0">New Comments</p>
+                  <h3 class="text-warning">{{ $voted_today_count }}</h3>
+                  <p class="mb-0">Have Voted Today</p>
                 </div>
                 <div class="align-self-center">
-                  <i class="far fa-comments text-warning fa-3x"></i>
+                  <i class="far fa-rocket text-warning fa-3x"></i>
                 </div>
               </div>
               <div class="px-md-1">
@@ -181,11 +89,11 @@
             <div class="card-body">
               <div class="d-flex justify-content-between px-md-1">
                 <div>
-                  <h3 class="text-success">64.89 %</h3>
-                  <p class="mb-0">Bounce Rate</p>
+                  <h3 class="text-success">{{ $hasNotVoted }}</h3>
+                  <p class="mb-0">Have Not Voted</p>
                 </div>
                 <div class="align-self-center">
-                  <i class="fas fa-mug-hot text-success fa-3x"></i>
+                  <i class="fas fa-rocket text-success fa-3x"></i>
                 </div>
               </div>
               <div class="px-md-1">
@@ -202,11 +110,11 @@
             <div class="card-body">
               <div class="d-flex justify-content-between px-md-1">
                 <div>
-                  <h3 class="text-danger">423</h3>
-                  <p class="mb-0">Total Visits</p>
+                  <h3 class="text-danger">{{ $hasNotVotedPercent }}%</h3>
+                  <p class="mb-0">Have Not Voted</p>
                 </div>
                 <div class="align-self-center">
-                  <i class="fas fa-map-signs text-danger fa-3x"></i>
+                  <i class="fas fa-rocket text-danger fa-3x"></i>
                 </div>
               </div>
               <div class="px-md-1">
