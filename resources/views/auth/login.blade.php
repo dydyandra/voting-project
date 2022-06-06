@@ -39,7 +39,7 @@
             <div class="w-100 text-start mt-1">
                 <a href="#">Forgot Password?</a>
             </div>
-            <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Sign in</button>
+            <button class="w-100 btn btn-lg btn-primary mt-3" type="submit" name="login">Sign in</button>
             <h6 class="my-2 fw-normal">OR</h6>
             <a class="w-100 btn btn-lg btn-secondary" href="{{ route('register') }}">Register</a>
         </form>

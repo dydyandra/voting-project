@@ -10,4 +10,8 @@ class Kandidat extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    public function voting(){
+        return $this->hasMany(Voting::class);
+    }
 }

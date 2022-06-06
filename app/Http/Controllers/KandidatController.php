@@ -58,6 +58,8 @@ class KandidatController extends Controller
 
         ]);
 
+
+
         if ($request->hasFile('photo')) {
             $filenameWithExt = $request->file('photo')->getClientOriginalName();
             // Get Filename
@@ -74,8 +76,11 @@ class KandidatController extends Controller
             $fileNameToStore = 'noimage.jpg';
         }
 
+        $slug = Str::slug($request->nama, '-');
+
         $kandidat = new Kandidat;
         $kandidat->nama = $request->nama;
+        $kandidat->slug = $request->slug;
         $kandidat->keterangan = $request->keterangan;
         $kandidat->photo = $fileNameToStore;
         $kandidat->save();
@@ -129,6 +134,8 @@ class KandidatController extends Controller
         ]);
 
         $kandidat = Kandidat::findOrFail($id);
+
+        $slug = Str::slug($request->nama, '-');
         if ($request->hasFile('photo')) {
             $request->validate([
                 'photo' => 'image',
@@ -151,12 +158,14 @@ class KandidatController extends Controller
             $kandidat->update([
                 'nama' => $request['nama'],
                 'keterangan' => $request['keterangan'],
+                'slug' => $slug, 
                 'photo' => $fileNameToStore,
             ]);
         } else {
             $kandidat->update([
                 'nama' => $request['nama'],
                 'keterangan' => $request['keterangan'],
+                'slug' => $slug, 
             ]);
         }
 
@@ -178,4 +187,10 @@ class KandidatController extends Controller
         $kandidat->delete();
         return redirect()->route('kandidat.list-kandidat')->with('hapus_review', 'Penghapusan data berhasil');
     }
+
+    public function content(Kandidat $kandidat){
+        return view('kandidat-detail', [
+            "kandidat" => $kandidat
+        ]);
+}
 }

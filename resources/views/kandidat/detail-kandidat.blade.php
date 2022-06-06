@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('layouts.template-admin')
 
 @section('container')
     <div class="row justify-content-center">

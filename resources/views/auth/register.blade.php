@@ -52,7 +52,7 @@
         <label for="floatingConfirm">Confirm Password</label>
       </div>
 
-      <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Register</button>
+      <button class="w-100 btn btn-lg btn-primary mt-3" type="submit" name="register">Register</button>
       <h6 class="my-2 fw-normal">OR</h6>
       <a class="w-100 btn btn-lg btn-secondary" href="{{ route('login') }}">Sign In</a>
     </form>

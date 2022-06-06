@@ -18,18 +18,21 @@ class KandidatSeeder extends Seeder
         Kandidat::create([
             'nama' => 'Aflah Hilmy',
             'keterangan' => 'Kandidat Nomor 1',
+            'slug' => 'aflahhilmy',
             'photo' => 'noimage.jpg'
         ]);
 
         Kandidat::create([
             'nama' => 'Maula',
             'keterangan' => 'Kandidat Nomor 2',
+            'slug' => 'maula',
             'photo' => 'noimage.jpg'
         ]);
 
         Kandidat::create([
             'nama' => 'Ichlas',
             'keterangan' => 'Kandidat Nomor 3',
+            'slug' => 'slug',
             'photo' => 'noimage.jpg'
         ]);
     }

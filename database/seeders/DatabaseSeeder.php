@@ -31,6 +31,11 @@ class DatabaseSeeder extends Seeder
             'isAdmin' => '1',
         ]);
 
+        DB::table('voting')->insert([
+            'user_id' => '1',
+            'kandidat_id' => '1'
+        ]);
+
         $this->call(ArticleSeeder::class);
         $this->call(KandidatSeeder::class);
     }

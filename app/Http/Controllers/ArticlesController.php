@@ -31,11 +31,10 @@ class ArticlesController extends Controller
     public function content(Article $article) {
         return view('content', [
             "article" => $article
-            
         ]);
     }
-  
-  // Returns all 500 without Caching 
+
+  // Returns all 500 without Caching
     public function allWithoutCache() {
         $articles = Article::all();
         return view('article', [
