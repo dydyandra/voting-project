@@ -3,10 +3,8 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 
 class KandidatTest extends TestCase
 {
@@ -15,24 +13,23 @@ class KandidatTest extends TestCase
      *
      * @return void
      */
-    public function test_example()
+    public function test_guest()
     {
-        $user = User::factory()->create();
-        $response = $this->actingAs($user)
-        ->get('/articles');
+        $response = $this->get('/kandidat');
+        $response->assertStatus(403);
+    }
 
-        $response->assertStatus(200);
+    public function test_user()
+    {
+        $user = User::find(2);
+        $response = $this->actingAs($user)->get('/kandidat');
+        $response->assertStatus(403);
     }
 
     public function test_admin()
     {
-        // $this->withoutMiddleware();
-        // Login as a user
-        $this->actingAs(User::factory()->create());
-        // Simulate a GET request to the given URL
-        $response = $this->get('/kandidat');
-        // Check the response, we should have been
-        // redirected to the homepage
-        $response->assertStatus(403);
+        $admin = User::find(1);
+        $response = $this->actingAs($admin)->get('/kandidat');
+        $response->assertStatus(200);
     }
 }
