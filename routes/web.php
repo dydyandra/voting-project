@@ -48,11 +48,18 @@ Route::get('/categories/{category:slug}', function(Category $category){
     ]);
 });
 
-Route::get('/voting', [VotingController::class, 'voting']);
+// Route::get('/voting', [VotingController::class, 'voting']);
 
 Route::get('/categories', function(){
     return view('categories', [
         'title' => 'Categories',
         'categories' => Category::all()
     ]);
+});
+
+
+Route::group(['prefix' => 'voting', 'as' => 'voting.'], function(){
+    Route::get('/', [VotingController::class, 'voting'])->name('voting');
+    Route::post('/store', [VotingController::class, 'store'])->name('store');
+    Route::get('/{kandidat:slug}', [KandidatController::class, 'content']);
 });

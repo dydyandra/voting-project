@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Kandidat;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Voting;
 
 class VotingController extends Controller
 {
@@ -16,32 +18,44 @@ class VotingController extends Controller
      */
     public function voting()
     {
-        return view('voting', [
-            "title" => 'Halaman Voting',
-            "candidates" => Kandidat::all()
-        ]);
-    }
-    public function hasil(Request $request)
-    {
-        $messagesError = [
-            'required' => ':attribute ini wajib diisi!',
-            'min' => ':attribute harus diisi minimal :min karakter!',
-            'max' => ':attribute harus diisi maksimal :max karakter!',
-            'mimes' => ':foto harus berupa jpg,png,jpeg!',
-            'numeric' => 'attribute harus diisi angka!',
-        ];
+        $id = Auth::id();
 
-        $this->validate($request,[
-            'nama_depan' => 'required|min:5',
-            'nama_belakang' => 'required|min:5|max:40',
-            'jenis_kelamin' => 'required|max:1',
-            'alamat' => 'required',
-            'email' => 'required',
-            'nomor_telepon' => 'required|numeric',
-            'ktp' => 'required|mimes:jpg,png,jpeg|max:2048',
-        ],$messagesError);
-        $request->ktp = $this->SavePhoto($request);
-        return view('hasil',['data' => $request]);
+        $hasVoted= Voting::where('user_id', $id)->first();
+        if ($hasVoted){
+            return view('hasil', [
+                'result' => $hasVoted
+            ]);
+        }
+        else{
+            return view('voting', [
+                "title" => 'Halaman Voting',
+                "candidates" => Kandidat::all()
+            ]);
+        }
+    }
+
+    public function store(Request $request)
+    {
+        $user_id = Auth::id(); 
+
+        $request->validate([
+            'kandidatvote' => 'required'
+        ]);
+
+        // $this->validate($request,[
+        //     'kandidatvote' => 'required',
+        // ],$messagesError);
+
+        // return view('hasil',['data' => $request]);
+        // dd($request);
+        $voting = new Voting;
+        $voting->user_id = $user_id;
+        $voting->kandidat_id = $request->kandidatvote;
+        $voting->save();
+
+
+        return redirect()->route('voting.voting')->with('tambah_review', 'Penambahan Pengguna berhasil');
+
     }
 
     public function index()
@@ -59,16 +73,16 @@ class VotingController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    // /**
+    //  * Store a newly created resource in storage.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function store(Request $request)
+    // {
+    //     //
+    // }
 
     /**
      * Display the specified resource.
