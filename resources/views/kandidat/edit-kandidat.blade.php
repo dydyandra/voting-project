@@ -50,7 +50,7 @@
 
                         <div class="mt-3 form-group">
                             <label class="font-weight-bold" style="font-weight: bold" for="photo">{{ __('edit.profile.photo') }}</label>
-                            <input type="file" class="form-control form-control-file  @error('photo') is-invalid @enderror"
+                            <input type="file" class="form-control form-control-lg form-control-file  @error('photo') is-invalid @enderror"
                                 id="photo" name="photo">
                             <img src="{{ asset('storage/images/' . $kandidat->photo) }}" alt="" style="height: 200px">
                         </div>
@@ -63,9 +63,9 @@
                     </form>
                     <br>
                     <div class="mt-4 text-center submit-btn">
-                        <a href="{{ route('kandidat.list-kandidat') }}" class="btn btn-secondary"
+                        <a href="{{ route('kandidat.list-kandidat') }}" class="btn btn-lg btn-secondary"
                             onclick="return confirm('{{ __('edit.confirm') }}');">{{ __('edit.back') }}</a>
-                        <button type="submit" class="btn btn-primary" form="form-login">{{ __('edit.edit') }}</button>
+                        <button type="submit" class="btn btn-lg btn-primary" form="form-login">{{ __('edit.edit') }}</button>
                     </div>
                 </div>
             </div>

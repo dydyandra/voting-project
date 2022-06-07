@@ -22,7 +22,7 @@
                     <img src="{{ asset('storage/images/' . $kandidat->photo) }}" alt="" style="height: 200px">
                 </div>
                 <div class="mt-4 text-center submit-btn">
-                    <a href="{{ route('kandidat.list-kandidat') }}" class="btn btn-secondary">Kembali</a>
+                    <a href="{{ route('kandidat.list-kandidat') }}" class="btn btn-lg btn-secondary">Kembali</a>
                 </div>
             </div>
         </div>
