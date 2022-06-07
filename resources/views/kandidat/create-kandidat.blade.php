@@ -51,7 +51,7 @@
 
                 <div>
                     {{-- <label for="photo">Gambar Buku</label> --}}
-                    <input type="file" class="mt-3 form-control form-control-file @error('photo') is-invalid @enderror" id="photo" name="photo">
+                    <input type="file" class="mt-3 form-control form-control-lg form-control-file @error('photo') is-invalid @enderror" id="photo" name="photo">
                 </div>
 
                 @error('photo')
@@ -63,7 +63,7 @@
             </form>
                 <br>
                 <div class="mt-4 text-center submit-btn">
-                    <button type="submit" class="btn btn-primary" form="form-login">{{__('form.button')}}</button>
+                    <button type="submit" class="btn btn-lg btn-primary" form="form-login">{{__('form.button')}}</button>
                 </div>
             </div>
         </div>

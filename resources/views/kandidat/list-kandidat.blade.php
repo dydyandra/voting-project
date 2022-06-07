@@ -8,32 +8,34 @@
         <div class="card">
             <div class="card-body">
                 <div class="col-6 mb-2">
-                    <a href="{{ route('kandidat.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> {{__('form.table.add')}}</a>
+                    <a href="{{ route('kandidat.create') }}" class="btn btn-primary"><i class="mb-1" data-feather="plus"></i> {{__('form.table.add')}}</a>
                 </div>
             </div>
             <div class="card-body">
                 @if (Session::has('tambah_data'))
-                <div class="alert alert-success alert-dismissible fade show p-3 bg-success w-100" role="alert">
-                    <strong><i class="fa fa-check-circle"></i> {{__('form.message.success')}}!</strong>
+                <div class="alert alert-success alert-dismissible fade show p-3 bg-success w-50" role="alert">
+                    <strong><i class="align-middle" data-feather="check-circle"></i> {{__('form.message.success')}}!</strong>
+                    <button type="button" class="btn-close ms-5" data-bs-dismiss="alert" aria-label="Close"></button>
                     <br>
                     {{__('form.message.add')}}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 @endif
 
                 @if (Session::has('edit_data'))
-                <div class="alert alert-success alert-dismissible fade show p-3 bg-success w-100" role="alert"> <strong><i class="fa fa-check-circle"></i> {{__('form.message.success')}}!</strong>
+                <div class="alert alert-success alert-dismissible fade show p-3 bg-success w-50" role="alert">
+                    <strong><i class="align-middle" data-feather="check-circle"></i> {{__('form.message.success')}}!</strong>
+                    <button type="button" class="btn-close ms-5" data-bs-dismiss="alert" aria-label="Close"></button>
                     <br>
                     {{__('form.message.edit')}}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 @endif
 
                 @if (Session::has('hapus_data'))
-                <div class="alert alert-success alert-dismissible fade show p-3 bg-success w-100" role="alert"> <strong><i class="fa fa-check-circle"></i> {{__('form.message.success')}}!</strong>
+                <div class="alert alert-success alert-dismissible fade show p-3 bg-success w-50" role="alert">
+                    <strong><i class="align-middle" data-feather="check-circle"></i> {{__('form.message.success')}}!</strong>
+                    <button type="button" class="btn-close ms-5" data-bs-dismiss="alert" aria-label="Close"></button>
                     <br>
                     {{__('form.message.delete')}}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 @endif
 
@@ -58,13 +60,13 @@
                         <td>{{ $d->keterangan }}</td>
                         <td>
                             <form onsubmit="return confirm('Apakah Anda Yakin Menghapus Data ini ?');" action="{{ route('kandidat.destroy', $d->id) }}" method="POST">
-                                <a href="{{ Route('kandidat.edit', $d->id) }}" class="btn btn-sm btn-warning shadow"><i class="fa fa-edit"></i> {{__('form.table.edit')}}</a>
+                                <a href="{{ Route('kandidat.edit', $d->id) }}" class="btn btn-warning shadow"><i class="mb-1" data-feather="edit"></i> {{__('form.table.edit')}}</a>
                                 |
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger shadow"><i class="fa fa-trash"></i> {{__('form.table.delete')}}</button>
+                                <button type="submit" class="btn btn-danger shadow"><i class="mb-1" data-feather="trash-2"></i></i> {{__('form.table.delete')}}</button>
                                 |
-                                <a href="{{ route('kandidat.show' , $d->id) }}" class="btn btn-sm btn-secondary shadow"><i class="fa fa-info-circle"></i> Detail</a>
+                                <a href="{{ route('kandidat.show' , $d->id) }}" class="btn btn-secondary shadow"><i class="mb-1" data-feather="info"></i></i> Detail</a>
                             </form>
                         </td>
                     </tr>

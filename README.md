@@ -1254,7 +1254,8 @@ src="{{ asset('storage/images/'. $d->photo) }}"
 
 
 
-```View``` digunakan untuk menampilkan data dengan interface yang lebih ramah mata. Templating yang digunakan untuk menggunakan view yaitu ``blade` seperti pada contoh gambar.
+`View` digunakan untuk menampilkan data dengan interface yang lebih ramah mata. Templating yang digunakan untuk menggunakan view yaitu `blade` seperti pada contoh gambar.<br>
+
 <img src="/images/view.PNG" width="300"/>
 
 Penggunaan view dan blade sangatlah banyak. Ada beberapa contoh penggunaan juga seperti penggunaan associative array untuk mengirimkan data kepada view, dan juga menggunakan compact. Untuk ini diatur pada Controller terkait. 
