@@ -553,6 +553,135 @@ Berikut adalah contoh hasil testing dengan menggunakan run `php artisan test`:
 
 
 ### Feature testing
+**Lokasi:** [Feature Testing](tests\Feature)
+
+Unit testing dilakukan untuk 2 fitur yaitu redirect dari home dan gate di view kandidat.
+
+1. Testing [redirect dari home](tests/Feature/HomeTest.php) melakukan pengecekan apakah user yang mengakses home ter-redirect sesuai role.
+```php
+    public function test_redirectGuest()
+    {
+        $response = $this->get('/');
+        $response->assertStatus(302);
+        $response->assertRedirect('/articles');
+    }
+
+    public function test_redirectUser()
+    {
+        $user = User::find(2);
+        $response = $this->actingAs($user)->get('/');
+        $response->assertStatus(302);
+        $response->assertRedirect('/articles');
+    }
+
+    public function test_redirectAdmin()
+    {
+        $admin = User::find(1);
+        $response = $this->actingAs($admin)->get('/');
+        $response->assertStatus(302);
+        $response->assertRedirect('/kandidat');
+    }
+```
+
+2. Testing [gate di view kandidat](tests/Feature/KandidatTest.php) melakukan pengecekan apakah role yang tidak bisa mengakses halaman mendapatkan status "403".
+```php
+    public function test_guest()
+    {
+        $response = $this->get('/kandidat');
+        $response->assertStatus(403);
+    }
+
+    public function test_user()
+    {
+        $user = User::find(2);
+        $response = $this->actingAs($user)->get('/kandidat');
+        $response->assertStatus(403);
+    }
+
+    public function test_admin()
+    {
+        $admin = User::find(1);
+        $response = $this->actingAs($admin)->get('/kandidat');
+        $response->assertStatus(200);
+    }
+```
+
+Berikut adalah contoh hasil testing dengan menggunakan run `php artisan test`:
+<img src="/images/test.PNG" width="500"/>
+
+**Browser Test**
+
+Selain testing dengan fitur bawaan Laravel. Dilakukan juga Browser Testing dengan menggunakan package Laravel Dusk.
+
+**Lokasi:** [Browser Testing](tests/Browser)
+
+Browser testing dilakukan untuk 3 fitur yaitu Register, Login, dan Logout.
+
+1. Testing [Register](tests/Browser/RegisterTest.php) melakukan pengecekan apakah fitur register berjalan dengan lancar.
+```php
+use DatabaseMigrations;
+
+    public function test_register()
+    {
+        $this->seed();
+
+        $this->browse(function ($browser) {
+            $browser->visit('/register')
+                ->type('name', 'testing')
+                ->type('email', 'testing@mail.com')
+                ->type('password', 'testing123')
+                ->type('password_confirmation', 'testing123')
+                ->press('register')
+                ->assertPathIs('/articles');
+        });
+    }
+```
+
+2. Testing [Login](tests/Browser/LoginTest.php) melakukan pengecekan apakah fitur login berjalan dengan lancar.
+```php
+use DatabaseMigrations;
+
+    public function test_login()
+    {
+        $this->seed();
+
+        $user = User::factory()->create([
+            'email' => 'test@example.com',
+        ]);
+
+        $this->browse(function ($browser) use ($user) {
+            $browser->visit('/login')
+                ->type('email', $user->email)
+                ->type('password', 'password')
+                ->press('login')
+                ->assertPathIs('/articles');
+        });
+    }
+```
+
+3. Testing [Logout](tests/Browser/LogoutTest.php) melakukan pengecekan apakah fitur logout berjalan dengan lancar.
+```php
+use DatabaseMigrations;
+
+    public function test_register()
+    {
+        $this->seed();
+
+        $this->browse(function ($browser) {
+            $browser->visit('/register')
+                ->type('name', 'testing')
+                ->type('email', 'testing@mail.com')
+                ->type('password', 'testing123')
+                ->type('password_confirmation', 'testing123')
+                ->press('register')
+                ->assertPathIs('/articles');
+        });
+    }
+```
+
+Berikut adalah contoh hasil testing dengan menggunakan run `php artisan dusk`:
+![image](https://user-images.githubusercontent.com/74708771/172272857-99d974b7-4618-46b3-933d-ed6db3dd3e04.png)
+
 
 ## Optional
 ### Laravel jobs and queue
