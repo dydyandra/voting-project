@@ -29,7 +29,6 @@
       font-weight: bold;
     }
 
-<<<<<<< HEAD
         .btn-purple {
             background-color: rgb(8, 51, 94);
             font-weight: bold;
@@ -108,65 +107,6 @@
     </nav>
     <div class="container m-auto">
         @yield('container')
-=======
-    .btn-purple {
-      background-color: rgb(8, 51, 94);
-      font-weight: bold;
-      color: white;
-    }
-  </style>
-</head>
-
-<body>
-  <nav class="navbar navbar-expand-lg navbar navbar-dark sticky-top mx-auto " style="padding: 1% 20% 1% 20%">
-    <div class="container-fluid">
-      {{-- <a class="navbar-brand" href="/article">
-        <img src="/images/logo2.png" width="50" alt="">
-        </a> --}}
-      <h3 class="mx-3 mt-1" style="color: white">
-        <a href="/" class='mx-3 mt-1' style="color:white">
-          Lotere Amnida
-        </a>
-      </h3>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active mx-2 mt-1" style="text-align:center" aria-current="page" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active mx-2 mt-1" style="text-align:center" aria-current="page" href="/articles">Artikel</a>
-          </li>
-          @can('is-user')
-          <li class="nav-item">
-            <a class="nav-link active mx-2" style="text-align:center; font-size:125%; color:aquamarine" aria-current="page" href="/voting">Vote Now!</a>
-          </li>
-          @else
-          <li class="nav-item">
-            <a class="nav-link active mx-2" style="text-align:center; font-size:125%; color:aquamarine" aria-current="page" href="/login">Vote Now!</a>
-          </li>
-          @endcan
-          {{-- <li class="nav-item">
-              <a class="nav-link" href="/artikel"></a>
-            </li> --}}
-        </ul>
-        {{-- <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-light" type="submit">Search</button>
-        </form> --}}
-        @yield('localization')
-        @auth
-        <form method="POST" action="{{ route('logout') }}">
-          @csrf
-          <button class="btn btn-outline-danger ms-2" type="submit" name="logout">Log out</button>
-        </form>
-        @else
-        <a href="{{ route('login') }}" class="btn btn-outline-light ms-2">Log in</a>
-        @endauth
-      </div>
->>>>>>> 059a9d9957de6399f609ecac2aa9adc10b94b3ea
     </div>
   </nav>
   <div class="container m-auto">
