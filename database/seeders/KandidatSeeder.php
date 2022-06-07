@@ -16,24 +16,24 @@ class KandidatSeeder extends Seeder
     public function run()
     {
         Kandidat::create([
-            'nama' => 'Aflah Hilmy',
-            'keterangan' => 'Kandidat Nomor 1',
-            'slug' => 'aflahhilmy',
-            'photo' => 'noimage.jpg'
+            'nama' => 'Barack Obama',
+            'keterangan' => 'Barack Hussein Obama II (lahir 4 Agustus 1961) adalah seorang politikus Amerika yang menjabat sebagai Presiden Amerika Serikat ke-44.',
+            'slug' => 'barackobama',
+            'photo' => 'barack.jpg'
         ]);
 
         Kandidat::create([
-            'nama' => 'Maula',
-            'keterangan' => 'Kandidat Nomor 2',
-            'slug' => 'maula',
-            'photo' => 'noimage.jpg'
+            'nama' => 'Joe Biden',
+            'keterangan' => 'Joseph Robinette Biden Jr. (lahir 20 November 1942) adalah seorang politikus Amerika yang menjabat sebagai Presiden Amerika Serikat ke-46.',
+            'slug' => 'joebiden',
+            'photo' => 'biden.jpeg'
         ]);
 
-        Kandidat::create([
-            'nama' => 'Ichlas',
-            'keterangan' => 'Kandidat Nomor 3',
-            'slug' => 'slug',
-            'photo' => 'noimage.jpg'
-        ]);
+        // Kandidat::create([
+        //     'nama' => 'Ichlas',
+        //     'keterangan' => 'Kandidat Nomor 3',
+        //     'slug' => 'slug',
+        //     'photo' => 'noimage.jpg'
+        // ]);
     }
 }

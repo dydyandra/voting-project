@@ -108,10 +108,7 @@
     <div class="container m-auto">
         @yield('container')
     </div>
-  </nav>
-  <div class="container m-auto">
-    @yield('container')
-  </div>
+
 
   <!-- Optional JavaScript; choose one of the two! -->
 
