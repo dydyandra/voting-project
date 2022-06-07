@@ -215,7 +215,74 @@ Query banyak digunakan pada Controller untuk mengambil data dari database untuk 
 Kebanyakan querybuilder yang digunakan pada project menggunakan Eloquent, yang dapat dilihat di atas. 
 
 ### Laravel authentication and authorization
-(semangat flah)
+#### Authentication
+**Lokasi:**
+1. Fortify: [app/Actions/Fortify](app/Actions/Fortify)
+2. FortifyServiceProvider: [FortifyServiceProvider.php](app/Providers/FortifyServiceProvider.php)
+3. config: [fortify.php](config/fortify.php)
+
+Untuk Authentication menggunakan package Laravel Fortify. Laravel Fortify adalah package yang menyediakan implementasi backend untuk autentikasi di Laravel meliputi login, register, dll. Laravel Fortify tidak menyediakan user interface seperti Laravel Breeze sehingga lebih leluasa untuk menentukan teknologi bagian frontend-nya. Selain itu, Laravel Fortify juga tidak mengubah controller dan routing yang sudah ada sebelumnya.
+
+Fitur yang digunakan: Login dan Register.
+
+Berikut adalah contoh kode dari Laravel Fortify yang terdapat pada [CreateNewUser.php](app/Actions/Fortify/CreateNewUser.php):
+```php
+public function create(array $input)
+    {
+        Validator::make($input, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                Rule::unique(User::class),
+            ],
+            'password' => $this->passwordRules(),
+        ])->validate();
+
+        return User::create([
+            'name' => $input['name'],
+            'email' => $input['email'],
+            'password' => Hash::make($input['password']),
+        ]);
+    }
+```
+
+#### Authorization
+**Lokasi:**
+1. [AuthServiceProvider.php](app/Providers/AuthServiceProvider.php)
+Menambahkan gate yang mendeteksi 3 jenis pengguna, yaitu admin, user, dan not admin(guest dan user).
+```php
+        Gate::define('is-admin', function ($user) {
+            if ($user->isAdmin) {
+                return true;
+            }
+        });
+
+        Gate::define('is-user', function ($user) {
+            if (!$user->isAdmin) {
+                return true;
+            }
+        });
+
+        Gate::define('not-admin', function (?User $user) {
+            if (Auth::guest() || Auth::user() && !Auth::user()->isAdmin) {
+                return true;
+            }
+        });
+```
+2. [Routing](routes/web.php)
+Melakukan pengecekan gate didalam routing dengan menggunakan middleware (can:)
+```php
+Route::group(['prefix' => 'kandidat', 'as' => 'kandidat.', 'middleware' => 'can:is-admin'], function () {
+    Route::get('/', [KandidatController::class, 'index'])->name('list-kandidat');
+    .............................
+});
+
+```
+
+Authorization yang digunakan adalah menggunakan Gate dan dilakukan pengecekan di controller. Pengguna dibagi menjadi 3 jenis, yaitu admin, user, dan not admin(guest dan user).
 
 
 ### Laravel localization and file storage
